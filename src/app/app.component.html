@@ -28,7 +28,9 @@
 
   <!-- Asociación de las columnas a la fila de encabezado -->
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-
-  <!-- Asociación de las columnas a las filas de datos -->
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+
+<button mat-raised-button color="primary" (click)="exportToExcel()">
+  Exportar a Excel
+</button>
