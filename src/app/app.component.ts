@@ -51,7 +51,7 @@ export interface PeriodicElement {
 })
 export class AppComponent implements OnInit {
   displayedColumns: string[] = ['Codigo', 'Moneda', 'DNI', 'Apellido Paterno', 'Apellido Materno', 'Nombres', 'Fecha de Nacimiento', 'Dirección', 'N. Ubigeo', 'Departamento', 'Provincia', 'Distrito', 'inmueble', 'Cuotas Atrasada', 'Estado', 'Cuota', 'fechaDesembolso', 'nValorizacion', 'vEdificacion', 'vPropiedad', 'vComercial', 'vRealizacionSol', 'vRealizacionDol', 'fechaValorizacion', 'idDistrito', 'nCuotas', 'cuotasAtrasadas'];
-  selectedDate: Date;
+  selectedDate: Date = new Date();
   dataSource: PeriodicElement[] = [];
   constructor(private authService: AuthService) { }
 
@@ -70,6 +70,12 @@ export class AppComponent implements OnInit {
       // let fechaEnString: string = formattedDate;
       // Luego puedes usar "fechaEnString" donde lo necesites.
     }
+  }
+
+  onDateChange(event: any) {
+    // Aquí puedes realizar alguna acción con el valor de la fecha seleccionada
+    // Por ejemplo, puedes asignarla a la propiedad selectedDate
+    this.selectedDate = event.value;
   }
 
   exportToExcel() {
