@@ -42,7 +42,8 @@ export interface PeriodicElement {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-
+  // standalone: true,
+  // imports: [MatPaginatorModule],
 
 })
 export class AppComponent implements OnInit {
