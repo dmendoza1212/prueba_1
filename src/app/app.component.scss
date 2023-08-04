@@ -1,25 +1,28 @@
-.demo-table {
-  width: 100%;
+.example-container {
+  height: 800px;
+  width: 1500px;
+  max-width: 100%;
+  overflow: auto;
 }
 
-.mat-column-demo-position {
-  width: 32px;
-  border-right: 1px solid currentColor;
-  padding-right: 24px;
-  text-align: center;
+table {
+  width: 800px;
 }
 
-.mat-column-demo-name {
-  padding-left: 16px;
-  font-size: 20px;
+td.mat-column-star {
+  width: 20px;
+  padding-right: 8px;
 }
 
-.mat-column-demo-weight {
-  font-style: italic;
+th.mat-column-position,
+td.mat-column-position {
+  padding-left: 8px;
 }
 
-.mat-column-demo-symbol {
-  width: 32px;
-  text-align: center;
-  font-weight: bold;
+.mat-mdc-table-sticky-border-elem-right {
+  border-left: 1px solid #e0e0e0;
+}
+
+.mat-mdc-table-sticky-border-elem-left {
+  border-right: 1px solid #e0e0e0;
 }

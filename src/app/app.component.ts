@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 import { AuthService } from './auth.service';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatButtonModule } from '@angular/material/button';
+
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 export interface PeriodicElement {
   codigoId: string; //;
@@ -37,7 +33,6 @@ export interface PeriodicElement {
   idDistrito: string; //;                                ,
   nCuotas: string; //;  ,
   cuotasAtrasadas: string; //;
-
 }
 
 /**
@@ -48,17 +43,50 @@ export interface PeriodicElement {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 
+
 })
 export class AppComponent implements OnInit {
-  displayedColumns: string[] = ['Codigo', 'Moneda', 'DNI', 'Apellido Paterno', 'Apellido Materno', 'Nombres', 'Fecha de Nacimiento', 'Dirección', 'N. Ubigeo', 'Departamento', 'Provincia', 'Distrito', 'inmueble', 'Cuotas Atrasada', 'Estado', 'Cuota', 'fechaDesembolso', 'nValorizacion', 'vEdificacion', 'vPropiedad', 'vComercial', 'vRealizacionSol', 'vRealizacionDol', 'fechaValorizacion', 'idDistrito', 'nCuotas', 'cuotasAtrasadas'];
+  displayedColumns: string[] = [
+    'headerData',
+    'codigoId',
+    'moneda',
+    'documento',
+    'aPaterno',
+    'aMaterno',
+    'nombres',
+    'fechaNacimiento',
+    'direccion',
+    'ubigeo',
+    'departamento',
+    'provincia',
+    'distrito',
+    'inmueble',
+    'cuotasAtrasada',
+    'estado',
+    'cuota',
+    'fechaDesembolso',
+    'nValorizacion',
+    'vEdificacion',
+    'vPropiedad',
+    'vComercial',
+    'vRealizacionSol',
+    'vRealizacionDol',
+    'fechaValorizacion',
+    'idDistrito',
+    'nCuotas',
+    'cuotasAtrasadas',
+  ];
   selectedDate: Date = new Date();
   dataSource: PeriodicElement[] = [];
+  headerData: (index: number) => string = (index: number) => (index + 1).toString(); // Inicialización de headerData
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.loadApiData(); // Cargar los datos desde la API al inicializar el componente
   }
-
+  getRowNumber(index: number): string {
+    return (index + 1).toString();
+  }
 
   onSubmit() {
     if (this.selectedDate) {
@@ -87,7 +115,10 @@ export class AppComponent implements OnInit {
     XLSX.utils.book_append_sheet(wb, ws, 'Datos');
 
     // Generar el archivo Excel
-    const excelBuffer: any = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+    const excelBuffer: any = XLSX.write(wb, {
+      bookType: 'xlsx',
+      type: 'array',
+    });
     const excelFileName = 'datos.xlsx'; // Nombre del archivo Excel
     const blob = new Blob([excelBuffer], {
       type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
@@ -105,5 +136,4 @@ export class AppComponent implements OnInit {
       this.dataSource = data; // Asignar los datos obtenidos desde la API a la variable dataSource
     });
   }
-
 }
