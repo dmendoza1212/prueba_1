@@ -17,7 +17,7 @@ export class AuthService {
     // Agregar datos de autenticación básica en el encabezado de la solicitud
     const headers = new HttpHeaders({
       Authorization:
-        'Basic ' + btoa('user:2fc8f89e-fc04-4958-bfb4-0008b1fe6607'),
+        'Basic ' + btoa('user:2d59c4d1-4ea1-4ec1-8ade-9dd61d0d3a56'),
       // Reemplaza 'username' y 'password' con tus credenciales 1e694cf7-61a9-4764-af61-26217a10eda9
     });
     return this.http.get<any[]>(url, { headers });

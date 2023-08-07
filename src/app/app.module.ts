@@ -16,6 +16,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic'; // Importa la función bootstrapApplication
+import { RiesgosComponent } from './views/riesgos/riesgos.component';
+import { HomeComponent } from './views/home/home.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,17 +26,28 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic'; // I
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatTableModule,
+    HttpClientModule,
     MatDatepickerModule,
     MatInputModule,
     MatFormFieldModule,
-    MatNativeDateModule,
     MatButtonModule,
-    HttpClientModule,
-    MatPaginatorModule, MatDialogModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    SharedModule,
+    AppRoutingModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+  ],
+  exports: [
 
   ],
   providers: [],
   bootstrap: [AppComponent], // AppComponent should be here in the bootstrap array
 })
 export class AppModule { }
+
+
